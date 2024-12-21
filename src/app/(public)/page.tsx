@@ -11,7 +11,7 @@ import { videoService } from '@/services/video.service'
 import type { IVideo } from '@/types/video.types'
 
 export const metadata: Metadata = {
-  title: "Sargsyan's",
+  title: 'Watch with smile',
   description: "Best video from Sargsyan's",
   alternates: {
     canonical: PAGE.HOME
@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     title: "Sargsyan's"
   }
 }
+
+export const revalidate = 100
+export const dynamic = 'force-static'
 
 export default async function Home() {
   const { data } = await videoService.getTrendingVideos()

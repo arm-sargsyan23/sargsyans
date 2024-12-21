@@ -1,10 +1,11 @@
 'use client'
 
 import cn from 'clsx'
-import { type PropsWithChildren, useState } from 'react'
+import { type PropsWithChildren, useEffect, useState } from 'react'
 
 import { Content } from './content/Content'
 import { SideBar } from './side-bar/SideBar'
+import { authService } from '@/services/auth.service'
 
 import styles from './Layout.module.scss'
 
@@ -15,6 +16,10 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
     setIsShowedSidebar(!isShowedSidebar)
   }
 
+  useEffect(() => {
+    authService.initializeAuth()
+  })
+
   return (
     <main
       className={cn(
@@ -23,7 +28,10 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
         isShowedSidebar ? styles.showedSidebar : styles.hidedSidebar
       )}
     >
-      <SideBar toggleSidebar={toggleSidebar} />
+      <SideBar
+        toggleSidebar={toggleSidebar}
+        isShowedSidebar={isShowedSidebar}
+      />
       <Content>{children}</Content>
     </main>
   )

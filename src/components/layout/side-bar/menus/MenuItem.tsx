@@ -8,9 +8,10 @@ import type { ISideBarItem } from '../side-bar.types'
 interface Props {
   item: ISideBarItem
   isActive: boolean
+  isShowedSidebar: boolean
 }
 
-export function MenuItem({ item, isActive }: Props) {
+export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
   return (
     <li>
       <Link
@@ -18,8 +19,9 @@ export function MenuItem({ item, isActive }: Props) {
         className={cn('group flex items-center gap-5 py-3')}
       >
         <item.icon
-          className={cn('min-w-6', {
-            'group-hover:text-primary transition group-hover:rotate-6': !isActive
+          className={cn('min-w-6 ', {
+            'group-hover:text-primary transition group-hover:rotate-6': !isActive,
+            'text-red-500': isActive && !isShowedSidebar
           })}
         />
         <span

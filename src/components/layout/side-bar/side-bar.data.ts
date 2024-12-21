@@ -39,7 +39,7 @@ export const SIDEBAR_DATA: ISideBarItem[] = [
   },
   {
     icon: CirclePlay,
-    label: 'subscriptions',
+    label: 'Subscriptions',
     link: PAGE.SUBSCRIPTION
   },
   {
