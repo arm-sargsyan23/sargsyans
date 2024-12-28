@@ -1,12 +1,19 @@
 import { axiosClassic } from '@/api/axios'
 
-import type { IMain } from '@/types/video.types'
+import type { IMain, ISingleVideoResponse, IVideoPagination } from '@/types/video.types'
 
 class VideoService {
   private _VIDEOS = '/videos'
 
-  getAll(searchTerm: string | null) {
-    return axiosClassic.get<IMain>(this._VIDEOS, searchTerm ? { params: { searchTerm } } : {})
+  getAll(searchTerm?: string | null) {
+    return axiosClassic.get<IVideoPagination>(
+      this._VIDEOS,
+      searchTerm ? { params: { searchTerm } } : {}
+    )
+  }
+
+  byPublicId(publicId?: string | null) {
+    return axiosClassic.get<ISingleVideoResponse>(`${this._VIDEOS}/by-publicId/${publicId}`)
   }
 
   getExploreVideos() {

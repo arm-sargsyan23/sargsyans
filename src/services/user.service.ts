@@ -11,5 +11,8 @@ class UserService {
   updateProfile(data: ISettingsData) {
     return instance.put<IFullUser>(`${this._USERS}/profile`, data)
   }
+  toggleLike(videoId: string) {
+    return instance.put(`${this._USERS}/profile/likes`, { videoId })
+  }
 }
 export const userService = new UserService()

@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: COLORS,
       padding: {
-        layout: '1.1rem'
+        layout: '1.4rem'
       },
       transitionTimingFunction: {
         DEFAULT: 'ease-in-out'

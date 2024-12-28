@@ -25,7 +25,7 @@ export function ImagePreview({ isLoading, value, overlay, aspectRation }: Props)
               <Image
                 src='/overlay.png'
                 alt='Overlay'
-                className='rounded-md absolute top-0 left-0 w-full h-full'
+                className='rounded-md absolute top-0 left-0 h-full'
                 width={width}
                 height={height}
                 priority

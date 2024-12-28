@@ -1,12 +1,14 @@
 import * as m from 'framer-motion/m'
-import { BadgeCheck, type LucideIcon } from 'lucide-react'
+import { type LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { PAGE } from '@/config/public-page.config'
 
-import { transformViews } from '@/utils/transform-views'
+import { transformCount } from '@/utils/transform-count'
 import { transformDate } from '@/utils/transform.date'
+
+import { VerifiedBadge } from '../VerifiedBadge'
 
 import type { IVideo } from '@/types/video.types'
 
@@ -26,10 +28,11 @@ export function VideoItem({ video, Icon }: Props) {
           <Image
             src={video.thumbnailUrl}
             alt={video.title}
-            width={250}
-            height={140}
+            width={350}
+            height={171}
             className='rounded-md'
             priority
+            quality={100}
           />
         </Link>
         <Link
@@ -43,6 +46,7 @@ export function VideoItem({ video, Icon }: Props) {
             height={40}
             className='rounded-full shadow'
             priority
+            quality={100}
           />
         </Link>
       </div>
@@ -54,9 +58,9 @@ export function VideoItem({ video, Icon }: Props) {
               size={20}
             />
           )}
-          <span className='text-gray-500 text-sm'>{transformViews(video.viewsCount)}</span>
+          <span className='text-gray-500 text-xs'>{transformCount(video.viewsCount)} views</span>
         </div>
-        <div>
+        <div className='grid gap-0.5'>
           <span className='text-gray-500 text-xs'>{transformDate(video.createdAt)}</span>
         </div>
       </div>
@@ -74,14 +78,7 @@ export function VideoItem({ video, Icon }: Props) {
           className='flex items-center gap-1'
         >
           <span className='text-gray-500 text-xs'>{video.channel.slug}</span>
-          {video.channel.isVerified && (
-            <span>
-              <BadgeCheck
-                className='text-green-500'
-                size={15}
-              />
-            </span>
-          )}
+          {video.channel.isVerified && <VerifiedBadge size={15} />}
         </Link>
       </div>
     </m.div>

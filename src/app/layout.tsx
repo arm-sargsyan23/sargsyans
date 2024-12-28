@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 
+import { SITE_URL } from '@/constants/constants'
+
 import { Providers } from '@/providers/Providers'
 
 import './globals.scss'
@@ -12,7 +14,8 @@ export const metadata: Metadata = {
     absolute: "Sargsyan's",
     template: `%s | Sargsyan's`
   },
-  description: 'Best app for video watching'
+  description: 'Best app for video watching',
+  metadataBase: new URL(SITE_URL)
 }
 
 export default function RootLayout({

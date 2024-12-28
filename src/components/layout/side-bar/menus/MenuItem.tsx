@@ -17,6 +17,7 @@ export function MenuItem({ item, isActive, isShowedSidebar }: Props) {
       <Link
         href={item.link}
         className={cn('group flex items-center gap-5 py-3')}
+        title={item.label}
       >
         <item.icon
           className={cn('min-w-6 ', {

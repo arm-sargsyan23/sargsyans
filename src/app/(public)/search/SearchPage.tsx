@@ -40,7 +40,7 @@ export function SearchPage() {
             />
           ))
         ) : (
-          <p className='text-gray-400'>Videos not found</p>
+          <p className='text-gray-500'>Videos not found</p>
         )}
       </div>
     </section>
