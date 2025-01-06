@@ -9,6 +9,8 @@ import './globals.scss'
 
 const notoSans = Noto_Sans({ subsets: ['latin'] })
 
+// export const fetchCache = 'default-cache'
+
 export const metadata: Metadata = {
   title: {
     absolute: "Sargsyan's",

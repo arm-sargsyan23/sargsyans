@@ -17,8 +17,8 @@ interface Props {
 }
 
 export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
-  const playerRef = useRef<HTMLCustomVideoElement>(null)
-  const bgRef = useRef<HTMLCustomVideoElement>(null)
+  const playerRef = useRef<HTMLCustomVideoElement | null>(null)
+  const bgRef = useRef<HTMLCustomVideoElement | null>(null)
 
   const [isLightingMode, setIsLightingMode] = useState(true)
 
@@ -38,7 +38,7 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
 
   const { isMuted, volume, changeVolume, toggleMute } = useVideoVolume(playerRef)
 
-  const { onSeek } = useOnSeek(playerRef, setCurrentTime, bgRef)
+  const { onSeek } = useOnSeek(playerRef, bgRef, setCurrentTime)
 
   useVideoHotkeys({
     volume,

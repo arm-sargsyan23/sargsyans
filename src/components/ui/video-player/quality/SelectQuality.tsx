@@ -34,30 +34,35 @@ export function SelectQuality({ currentValue, onChange, maxResolution }: Props) 
       </button>
       <AnimatePresence>
         {isShow && (
-          <m.ul
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.3 }}
-            className='bg-gray-800/60 py-2 px-4 rounded absolute bottom-[125%] right-0 z-10 shadow'
-          >
-            {availableQualities.map(quality => (
-              <li key={quality}>
-                <button
-                  onClick={() => {
-                    onChange(quality)
-                    setIsShow(false)
-                  }}
-                  className={cn('transition-colors hover:text-primary', {
-                    'text-primary': quality === currentValue
-                  })}
-                  disabled={quality === currentValue}
+          <div>
+            <m.ul
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+              className='bg-gray-800/60 py-2 px-4 rounded absolute bottom-[125%] right-0 z-10 shadow'
+            >
+              {availableQualities.map(quality => (
+                <li
+                  key={quality}
+                  className='mb-1'
                 >
-                  {quality}
-                </button>
-              </li>
-            ))}
-          </m.ul>
+                  <button
+                    onClick={() => {
+                      onChange(quality)
+                      setIsShow(false)
+                    }}
+                    className={cn('transition-colors hover:text-primary', {
+                      'text-primary': quality === currentValue
+                    })}
+                    disabled={quality === currentValue}
+                  >
+                    {quality}
+                  </button>
+                </li>
+              ))}
+            </m.ul>
+          </div>
         )}
       </AnimatePresence>
     </div>

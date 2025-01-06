@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
-import { SubPage } from './SubPage'
+import { LPage } from './LPage'
 
 export const metadata: Metadata = {
-  title: 'Subscriptions',
+  title: 'Liked videos',
   ...NO_INDEX_PAGE
 }
 
-export default function SubsPage() {
-  return <SubPage />
+export default function Page() {
+  return <LPage />
 }

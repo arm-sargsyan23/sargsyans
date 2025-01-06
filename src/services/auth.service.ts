@@ -55,16 +55,6 @@ class AuthService {
     return response
   }
 
-  async getNewTokensByRefresh(refreshToken: string) {
-    const response = await axiosClassic.post<IAuthResponse>(
-      `${this._AUTH}/access-token`,
-      {},
-      { headers: { Cookies: `refreshToken=${refreshToken}` } }
-    )
-
-    return response.data
-  }
-
   async logout() {
     const response = await axiosClassic.post<boolean>(`${this._AUTH}/logout`)
 

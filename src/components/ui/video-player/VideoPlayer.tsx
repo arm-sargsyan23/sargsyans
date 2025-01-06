@@ -23,7 +23,7 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
       {state.isLightingMode && (
         <video
           ref={bgRef}
-          className=' rounded-2xl absolute top-0 left-0 w-full h-full blur-3xl brightness-90 contrast-125 saturate-150 mix-blend-lighten'
+          className='absolute top-0 left-0 w-full h-full object-cover filter blur-3xl brightness-90 contrast-125 saturate-150 mix-blend-lighten'
           src={`/uploads/videos/${EnumVideoPlayerQuality['720p']}/${fileName}`}
           muted
         />
@@ -31,7 +31,7 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
 
       <video
         ref={playerRef}
-        className='aspect-video w-full relative z-[1] rounded-2xl'
+        className='aspect-video w-full relative z-[1] rounded-xl'
         controls={false}
         src={`/uploads/videos/${EnumVideoPlayerQuality['1080p']}/${fileName}`}
         preload='metadata'
@@ -47,12 +47,13 @@ export function VideoPlayer({ fileName, toggleTheaterMode, maxResolution }: Prop
           </button>
           <PlayerProgressBar
             currentTime={state.currentTime}
+            progress={state.progress}
             duration={state.videoTime}
             onSeek={fn.onSeek}
           />
 
           <div>
-            <span>{getTime(state.videoTime)}</span>
+            <span>{getTime(state.currentTime)}</span>
           </div>
         </div>
         <div className='flex items-center gap-5'>

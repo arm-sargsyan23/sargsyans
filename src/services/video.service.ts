@@ -16,14 +16,20 @@ class VideoService {
     return axiosClassic.get<ISingleVideoResponse>(`${this._VIDEOS}/by-publicId/${publicId}`)
   }
 
-  getExploreVideos() {
-    return axiosClassic.get<IMain>(`${this._VIDEOS}/explore`)
+  getExploreVideos(userid?: string) {
+    return axiosClassic.get<IVideoPagination>(`${this._VIDEOS}/explore`, {
+      params: { userid }
+    })
   }
   getTrendingVideos() {
     return axiosClassic.get(`${this._VIDEOS}/trending`)
   }
   getVideoGames() {
     return axiosClassic.get<IMain>(`${this._VIDEOS}/games`)
+  }
+
+  updateViews(publicId: string) {
+    return axiosClassic.put(`${this._VIDEOS}/update-views-count/${publicId}`)
   }
 }
 export const videoService = new VideoService()

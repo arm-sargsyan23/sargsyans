@@ -3,8 +3,6 @@ import { type KeyboardEvent, useState } from 'react'
 
 import { PAGE } from '@/config/public-page.config'
 
-// interface Props {}
-
 export function SearchField({}) {
   const [searchTerm, setSearchTerm] = useState('')
 

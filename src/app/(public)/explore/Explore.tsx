@@ -7,12 +7,16 @@ import { Heading } from '@/ui/Heading'
 import { SkeletonLoader } from '@/ui/SkeletonLoader'
 import { VideoItem } from '@/ui/video-item/VideoItem'
 
+import { useAuth } from '@/hooks/useAuth'
+
 import { videoService } from '@/services/video.service'
 
 export function Explore() {
+  const { user } = useAuth()
+
   const { data, isLoading } = useQuery({
     queryKey: ['explore'],
-    queryFn: () => videoService.getExploreVideos()
+    queryFn: () => videoService.getExploreVideos(user?.id)
   })
 
   return (

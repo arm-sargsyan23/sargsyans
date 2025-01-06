@@ -11,14 +11,26 @@ export function useVideoProgress(playerRef: RefObject<HTMLCustomVideoElement | n
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    if (!playerRef?.current) return
+    const player = playerRef?.current
+    if (!player) return
 
-    const { currentTime, progress, originalTime } = getVideoInfo(playerRef?.current)
+    const handleLoadedMetadata = () => {
+      const { currentTime, progress, originalTime } = getVideoInfo(playerRef.current)
+      setVideoTime(originalTime)
+      setCurrentTime(currentTime)
+      setProgress(progress)
+    }
 
-    setVideoTime(originalTime)
-    setCurrentTime(currentTime)
-    setProgress(progress)
-  }, [playerRef, playerRef?.current?.duration])
+    player.addEventListener('loadedmetadata', handleLoadedMetadata)
+
+    if (player.readyState >= 1) {
+      handleLoadedMetadata()
+    }
+
+    return () => {
+      player?.removeEventListener('loadedmetadata', handleLoadedMetadata)
+    }
+  }, [playerRef])
 
   useEffect(() => {
     const player = playerRef?.current

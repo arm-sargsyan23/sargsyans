@@ -8,8 +8,8 @@ import { PAGE } from '@/config/public-page.config'
 import { transformCount } from '@/utils/transform-count'
 import { transformDate } from '@/utils/transform.date'
 
-import { VerifiedBadge } from '../VerifiedBadge'
-
+import { VideoChannelName } from './VideoChannelName'
+import { VideoItemTitle } from './VideoItemTitle'
 import type { IVideo } from '@/types/video.types'
 
 interface Props {
@@ -65,21 +65,10 @@ export function VideoItem({ video, Icon }: Props) {
         </div>
       </div>
       <div className='mb-1'>
-        <Link
-          href={PAGE.VIDEO(video.publicId)}
-          className='text-sm line-clamp-2 leading-[1.3]'
-        >
-          {video.title}
-        </Link>
+        <VideoItemTitle video={video} />
       </div>
       <div>
-        <Link
-          href={PAGE.VIDEO(video.publicId)}
-          className='flex items-center gap-1'
-        >
-          <span className='text-gray-500 text-xs'>{video.channel.slug}</span>
-          {video.channel.isVerified && <VerifiedBadge size={15} />}
-        </Link>
+        <VideoChannelName channel={video?.channel} />
       </div>
     </m.div>
   )
