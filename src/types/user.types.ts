@@ -15,6 +15,7 @@ export interface IUser {
 export interface IVideoLike {
   id: string
   video: IFullVideo
+  videoId: string
   userID: string
 }
 
