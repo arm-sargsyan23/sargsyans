@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
-import { Textarea } from '@/ui/field/textarea'
+import { Textarea } from '@/ui/field/Textarea'
 
 import { useAuth } from '@/hooks/useAuth'
 

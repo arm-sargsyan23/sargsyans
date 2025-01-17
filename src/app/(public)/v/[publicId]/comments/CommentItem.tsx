@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 import { Heading } from '@/ui/Heading'
 import { VerifiedBadge } from '@/ui/VerifiedBadge'
-import { Textarea } from '@/ui/field/textarea'
+import { Textarea } from '@/ui/field/Textarea'
 
 import { PAGE } from '@/config/public-page.config'
 
@@ -63,7 +63,7 @@ export function CommentItem({ comment, refetch }: Props) {
             </Heading>
           </Link>
 
-          <div className='text-gray-500 text-[0.80rem]'>
+          <div className='text-gray-400 text-[0.80rem]'>
             <span>{transformDate(comment?.createdAt)}</span>
           </div>
         </div>

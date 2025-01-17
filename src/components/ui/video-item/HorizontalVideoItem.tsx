@@ -53,7 +53,7 @@ export function HorizontalVideoItem({ video }: Props) {
               />
             </div>
           </div>
-          <div className='flex items-center gap-2 pb-1 text-[0.8rem] text-gray-500'>
+          <div className='flex items-center gap-2 pb-1 text-[0.8rem] text-gray-400'>
             <span>{transformCount(video.viewsCount)} views</span>
             <span>•</span>
             <span>{transformDate(video.createdAt)}</span>

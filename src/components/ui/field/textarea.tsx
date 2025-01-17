@@ -23,7 +23,7 @@ export function Textarea({
     <div className={twMerge('mb-4', wrapperClassName)}>
       {label && (
         <label htmlFor={id}>
-          <span className='block text-gray-500 font-semibold mb-2'>{label}</span>
+          <span className='block text-gray-400 font-semibold mb-2'>{label}</span>
         </label>
       )}
       <textarea

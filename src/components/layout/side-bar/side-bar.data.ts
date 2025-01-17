@@ -85,6 +85,6 @@ export const STUDIO_SIDEBAR_DATA: ISideBarItem[] = [
   {
     icon: Upload,
     label: 'Upload video',
-    link: PAGE.FEEDBACK
+    link: STUDIO_PAGE.UPLOAD_VIDEO
   }
 ]

@@ -52,6 +52,7 @@ instance.interceptors.response.use(
           errorCatch(error) === 'Refresh token not passed'
         ) {
           authService.removeFromStorage()
+          return null
         }
       }
     }

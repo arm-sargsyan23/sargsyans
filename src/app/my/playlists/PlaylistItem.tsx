@@ -15,7 +15,7 @@ export function PlaylistItem({ playlist }: Props) {
     <m.div
       whileHover={{
         scale: 1.01,
-        y: -5
+        y: -2
       }}
       transition={{
         type: 'spring',
@@ -33,14 +33,14 @@ export function PlaylistItem({ playlist }: Props) {
           {!!playlist.videos[0]?.thumbnailUrl ? (
             <Image
               src={playlist.videos[0]?.thumbnailUrl}
-              width={290}
+              width={345}
               height={163}
               alt={playlist.title}
               quality={100}
               className='rounded-lg shadow-lg relative'
             />
           ) : (
-            <div className='w-[290] h-[163] rounded-lg shadow-lg relative' />
+            <div className='w-[310] h-[163] rounded-lg shadow-lg relative' />
           )}
           <div className='absolute bottom-1.5 right-1.5 py-0.5 text-xs font-medium bg-black/40 rounded px-1.5'>
             {playlist.videos.length} videos

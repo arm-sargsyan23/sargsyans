@@ -45,14 +45,19 @@ class AuthService {
   }
 
   async getNewTokens() {
-    const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/access-token`)
+    try {
+      const response = await axiosClassic.post<IAuthResponse>(`${this._AUTH}/access-token`)
 
-    if (response.data.accessToken) {
-      this._saveTokenStorage(response.data.accessToken)
-      store.dispatch(setAuthData(response.data))
+      if (response.data.accessToken) {
+        this._saveTokenStorage(response.data.accessToken)
+        store.dispatch(setAuthData(response.data))
+      }
+
+      return response
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return null
     }
-
-    return response
   }
 
   async logout() {

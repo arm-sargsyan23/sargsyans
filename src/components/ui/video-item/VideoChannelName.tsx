@@ -18,7 +18,9 @@ export function VideoChannelName({ channel, spanClassName }: Props) {
       href={PAGE.CHANNEL(channel?.slug)}
       className='flex items-center gap-1'
     >
-      <span className={twMerge('text-gray-500 text-xs', spanClassName)}>{channel?.user?.name}</span>
+      <span className={twMerge('text-gray-400 text-xs py-1', spanClassName)}>
+        {channel?.user?.name}
+      </span>
       {channel.isVerified && <VerifiedBadge size={15} />}
     </Link>
   )

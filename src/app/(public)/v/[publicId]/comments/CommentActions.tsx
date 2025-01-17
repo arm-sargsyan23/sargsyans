@@ -39,14 +39,14 @@ export function CommentActions({ comment, refetch, newText }: Props) {
       <button
         disabled={isUpdatePending}
         onClick={() => update()}
-        className='text-gray-500 text-sm opacity-90 hover:opacity-100 transition-opacity'
+        className='text-gray-400 text-sm opacity-90 hover:opacity-100 transition-opacity'
       >
         Save
       </button>
       <button
         disabled={isDeletePending}
         onClick={() => remove()}
-        className='text-gray-500 text-sm opacity-90 hover:opacity-100 transition-opacity'
+        className='text-gray-400 text-sm opacity-90 hover:opacity-100 transition-opacity'
       >
         delete
       </button>

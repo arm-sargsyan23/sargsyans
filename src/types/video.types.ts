@@ -18,16 +18,9 @@ export interface IVideo {
   videoFileName: string
   viewsCount: number
   createdAt: string
+  updatedAt: string
   channel: IChannel
-  tags: ITag[]
   maxResolution: EnumVideoPlayerQuality
-}
-
-export interface ITag {
-  id: string
-  name: string
-  createdAt: Date
-  updatedAt: Date
 }
 
 export interface IFullVideo extends IVideo {
@@ -39,6 +32,13 @@ export interface ISingleVideoResponse extends IFullVideo {
   similarVideos: IVideo[]
 }
 
-export interface IVideoPagination extends IPagination {
-  videos: IVideo[]
+export interface IStudioVideoResponse extends IFullVideo {
+  tags: {
+    id: string
+    name: string
+  }[]
+}
+
+export interface IVideosPagination extends IPagination {
+  videos: IFullVideo[]
 }

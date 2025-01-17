@@ -4,14 +4,12 @@ import { useMutation } from '@tanstack/react-query'
 import { Heart } from 'lucide-react'
 import { startTransition, useEffect, useState } from 'react'
 
-import { COLORS } from '@/constants/colors.constants'
-
 import { useProfile } from '@/hooks/useProfile'
 
 import { transformCount } from '@/utils/transform-count'
 
 import { SaveToPlaylist } from './SaveToPlaylist'
-import { userService } from '@/services/user.service'
+import { userService } from '@/services/studio/user.service'
 import type { ISingleVideoResponse } from '@/types/video.types'
 
 export function VideoActions({ video }: { video: ISingleVideoResponse }) {
@@ -62,11 +60,11 @@ export function VideoActions({ video }: { video: ISingleVideoResponse }) {
         onClick={() => {
           mutate()
         }}
-        className='text-primary flex items-center gap-1.5 transition-opacity opacity-85 hover:opacity-100'
+        className='text-[#FF453A] flex items-center gap-1.5 transition-opacity opacity-85 hover:opacity-100'
       >
         <Heart
           size={20}
-          fill={isLikedLocal ? COLORS.primary : 'transparent'}
+          fill={isLikedLocal ? '#FF453A' : 'transparent'}
         />
         {transformCount(optimisticLike)}
       </button>

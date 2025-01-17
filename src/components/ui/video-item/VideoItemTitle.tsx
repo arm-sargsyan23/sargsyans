@@ -12,7 +12,7 @@ export function VideoItemTitle({ video }: Props) {
   return (
     <Link
       href={PAGE.VIDEO(video.publicId)}
-      className='text-sm line-clamp-2 leading-[1.3]'
+      className='text-base line-clamp-2 leading-[1.3]'
     >
       {video.title}
     </Link>

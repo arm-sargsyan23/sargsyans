@@ -47,7 +47,8 @@ export function useVideoPlayer({ fileName, toggleTheaterMode }: Props) {
     toggleFullScreen,
     toggleMute,
     togglePlayPause,
-    toggleTheaterMode
+    toggleTheaterMode,
+    changeQuality
   })
 
   return {

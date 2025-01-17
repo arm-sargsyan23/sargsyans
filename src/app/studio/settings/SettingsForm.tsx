@@ -1,31 +1,34 @@
 'use client'
 
-import { Controller } from 'react-hook-form'
+import dynamic from 'next/dynamic'
 
 import { Button } from '@/ui/button/Button'
 import { Field } from '@/ui/field/Field'
-import { Textarea } from '@/ui/field/textarea'
-import { UploadField } from '@/ui/upload-field/UploadField'
+import { Textarea } from '@/ui/field/Textarea'
 
 import { useSettings } from './useSettings'
+
+const DynamicSettingsMediaFields = dynamic(() =>
+  import('./SettingsMediaFields').then(mod => mod.SettingsMediaFields)
+)
 
 export function SettingsForm() {
   const {
     form: {
+      handleSubmit,
       register,
       formState: { errors },
-      handleSubmit,
       control
     },
     isLoading,
-    onSubmit,
-    isProfileLoading
+    isProfileLoading,
+    onSubmit
   } = useSettings()
 
   if (isProfileLoading) return <div>Loading...</div>
 
   return (
-    <div className='w-3/2'>
+    <div className='w-3/5'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='grid grid-cols-2 gap-10'>
           <div>
@@ -41,7 +44,7 @@ export function SettingsForm() {
               type='password'
               registration={register('password')}
               error={errors.password?.message}
-              placeholder='Enter password'
+              placeholder='Enter password:'
             />
             <Field
               label='Name'
@@ -58,7 +61,7 @@ export function SettingsForm() {
               placeholder='Enter slug:'
             />
             <Textarea
-              label='description'
+              label='Description'
               registration={register('channel.description')}
               error={errors.channel?.description?.message}
               placeholder='Enter description:'
@@ -66,39 +69,9 @@ export function SettingsForm() {
             />
           </div>
 
-          <div>
-            <Controller
-              control={control}
-              name='channel.avatarUrl'
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <UploadField
-                  label='Avatar:'
-                  onChange={onChange}
-                  value={value}
-                  error={error}
-                  folder='avatars'
-                  className='mb-5'
-                />
-              )}
-            />
-            <Controller
-              control={control}
-              name='channel.bannerUrl'
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <UploadField
-                  label='Banner:'
-                  onChange={onChange}
-                  value={value}
-                  error={error}
-                  folder='banners'
-                  aspectRation='16:9'
-                  overlay='/overlay.png'
-                />
-              )}
-            />
-          </div>
+          <DynamicSettingsMediaFields control={control} />
         </div>
-        <div className='text-center mt-4'>
+        <div className='text-center mt-10'>
           <Button
             type='submit'
             isLoading={isLoading}

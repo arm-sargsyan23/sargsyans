@@ -59,7 +59,7 @@ export function HistoryPage() {
             />
           ))
         ) : (
-          <p className='text-gray-500'>Watch history not found</p>
+          <p className='text-gray-400'>Watch history not found</p>
         )}
       </div>
     </section>

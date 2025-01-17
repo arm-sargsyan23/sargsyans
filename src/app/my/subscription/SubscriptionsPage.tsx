@@ -34,7 +34,7 @@ export function SubscriptionsPage() {
             />
           ))
         ) : (
-          <p className='text-gray-500'>Subscriptions not found</p>
+          <p className='text-gray-400'>Subscriptions not found</p>
         )}
       </div>
     </section>

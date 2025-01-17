@@ -17,6 +17,14 @@ body {
   }
 }
 
+::-webkit-scrollbar {
+  @apply bg-border rounded-sm w-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-sm w-2 h-1;
+}
+
 .volume-slider::-webkit-slider-thumb {
   appearance: none;
   width: 10.5px;

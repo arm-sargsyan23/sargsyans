@@ -1,27 +1,3 @@
-// @keyframes hideSidebar {
-//     from {
-//         transform: translateX(0);
-//         width: var(--sidebar-width);
-//     }
-
-//     to {
-//         @apply w-[3.8rem];
-//         // transform: translateX(-100%);
-//     }
-// }
-
-// @keyframes showSidebar {
-//     from {
-//         @apply w-[3.8rem];
-//         // transform: translateX(-100%);
-//     }
-
-//     to {
-//         transform: translateX(0);
-//         width: var(--sidebar-width);
-//     }
-// }
-
 .hidedSidebar {
     > aside {
         width: 3.8rem;

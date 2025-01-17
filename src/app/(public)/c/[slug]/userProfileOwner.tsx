@@ -49,14 +49,14 @@ export function UserProfileOwner({ channel, slug }: { channel: IChannel; slug: s
               {channel.isVerified && <VerifiedBadge size={18} />}
             </span>
           </Heading>
-          <div className='mb-2  text-gray-500 text-[0.92rem] flex items-center gap-1'>
+          <div className='mb-2  text-gray-400 text-[0.92rem] flex items-center gap-1'>
             <span>/{channel.slug}</span>
             <span>•</span>
             <span>{transformCount(channel.subscribers.length)} subscribers</span>
             <span>•</span>
             <span>{channel.videos.length} videos</span>
           </div>
-          <article className='mb-2 text-gray-500 text-sm leading-snug'>
+          <article className='mb-2 text-gray-400 text-sm leading-snug'>
             {channel.description}
           </article>
           <DynamicSubscribeButton slug={slug} />

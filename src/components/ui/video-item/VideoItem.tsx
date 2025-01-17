@@ -20,7 +20,7 @@ interface Props {
 export function VideoItem({ video, Icon }: Props) {
   return (
     <m.div
-      whileHover={{ scale: 1.03, y: -5 }}
+      whileHover={{ scale: 1.03, y: -2 }}
       transition={{ type: 'spring', stiffness: 500, damping: 20 }}
     >
       <div className='relative mb-1.5'>
@@ -30,7 +30,7 @@ export function VideoItem({ video, Icon }: Props) {
             alt={video.title}
             width={350}
             height={171}
-            className='rounded-md'
+            className='rounded-md w-full'
             priority
             quality={100}
           />
@@ -38,6 +38,7 @@ export function VideoItem({ video, Icon }: Props) {
         <Link
           href={PAGE.CHANNEL(video.channel.slug)}
           className='absolute left-1.5 bottom-2'
+          aria-label='Channel name'
         >
           <Image
             src={video.channel.avatarUrl}
@@ -58,10 +59,10 @@ export function VideoItem({ video, Icon }: Props) {
               size={20}
             />
           )}
-          <span className='text-gray-500 text-xs'>{transformCount(video.viewsCount)} views</span>
+          <span className='text-gray-400 text-xs'>{transformCount(video.viewsCount)} views</span>
         </div>
         <div className='grid gap-0.5'>
-          <span className='text-gray-500 text-xs'>{transformDate(video.createdAt)}</span>
+          <span className='text-gray-400 text-xs'>{transformDate(video.createdAt)}</span>
         </div>
       </div>
       <div className='mb-1'>

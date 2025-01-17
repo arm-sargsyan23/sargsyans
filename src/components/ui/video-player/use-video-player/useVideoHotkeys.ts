@@ -1,68 +1,68 @@
 import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 
+import type { EnumVideoPlayerQuality } from '../video-player.types'
+
 import type { TSkipTime } from './useSkipTime'
 
 interface Props {
   togglePlayPause: () => void
+  changeQuality: (quality: EnumVideoPlayerQuality) => void
   toggleFullScreen: () => void
   skipTime: (type?: TSkipTime) => void
   changeVolume: (value: number) => void
   toggleMute: () => void
-  volume: number
   toggleTheaterMode: () => void
+  volume: number
 }
 
-export function useVideoHotkeys({
-  changeVolume,
-  skipTime,
-  toggleFullScreen,
-  toggleMute,
-  togglePlayPause,
-  toggleTheaterMode,
-  volume
-}: Props) {
+export function useVideoHotkeys({ volume, ...fn }: Props) {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.code === 'space' || e.key === ' ') {
-        e.preventDefault()
-        togglePlayPause()
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement
+      const isInputField =
+        target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable
+
+      if (!isInputField && (event.code === 'Space' || event.key === ' ')) {
+        event.preventDefault()
+        fn.togglePlayPause()
       }
     }
+
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [togglePlayPause])
+  }, [fn])
 
   useHotkeys('left', () => {
-    skipTime('backward')
+    fn.skipTime('backward')
   })
 
   useHotkeys('right', () => {
-    skipTime('forward')
+    fn.skipTime('forward')
   })
 
   useHotkeys('up', e => {
     e.preventDefault()
-    changeVolume(Math.min(volume + 0.1, 1))
+    fn.changeVolume(Math.min(volume + 0.1, 1))
   })
 
   useHotkeys('down', e => {
     e.preventDefault()
-    changeVolume(Math.max(volume - 0.1, 0))
-  })
-
-  useHotkeys('f', () => {
-    toggleFullScreen()
+    fn.changeVolume(Math.max(volume - 0.1, 0))
   })
 
   useHotkeys('m', () => {
-    toggleMute()
+    fn.toggleMute()
+  })
+
+  useHotkeys('f', () => {
+    fn.toggleFullScreen()
   })
 
   useHotkeys('t', () => {
-    toggleTheaterMode()
+    fn.toggleTheaterMode()
   })
 }

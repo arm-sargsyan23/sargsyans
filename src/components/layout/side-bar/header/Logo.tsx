@@ -1,4 +1,4 @@
-import { SquarePlay } from 'lucide-react'
+import { Youtube } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -14,7 +14,7 @@ export function Logo() {
       href={PAGE.HOME}
       className='inline-flex items-center gap-1.5'
     >
-      <SquarePlay
+      <Youtube
         size={29}
         color={COLORS.primary}
       />

@@ -46,7 +46,7 @@ export function VideoChannel({ video }: { video: ISingleVideoResponse }) {
             </Heading>
           </Link>
 
-          <div className='text-gray-500 text-sm flex items-center gap-1'>
+          <div className='text-gray-400 text-sm flex items-center gap-1'>
             <span>{transformCount(video?.channel?.subscribers?.length)} subscribers</span>
           </div>
         </div>
